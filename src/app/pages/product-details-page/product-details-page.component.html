@@ -1,0 +1,67 @@
+@if (product()) {
+  <section class="pdp-container">
+    <!-- Visual Stage: Minimal & Airy -->
+    <div class="pdp-visual">
+      <div class="stage">
+        @if (product().discountPercentage > 0) {
+          <span class="mini-badge"
+            >-{{ product().discountPercentage | number: "1.0-0" }}%</span
+          >
+        }
+        <img
+          [src]="product().images[0]"
+          [alt]="product().title"
+          class="product-thumb"
+        />
+      </div>
+    </div>
+
+    <!-- Content Stage: Structured & Clean -->
+    <div class="pdp-content">
+      <div class="content-limit">
+        <header class="pdp-header">
+          <span class="category-tag">{{ product().category }}</span>
+          <h1 class="pdp-title">{{ product().title }}</h1>
+          <div class="pdp-meta">
+            <span class="price">{{ product().price | currency }}</span>
+            <span class="sep">|</span>
+            <span class="rating">★ {{ product().rating }}</span>
+          </div>
+        </header>
+
+        <div class="pdp-description">
+          <p>{{ product().description }}</p>
+        </div>
+
+        <div class="pdp-specs">
+          <div class="spec-row">
+            <span class="label">Shipping</span>
+            <span class="val">{{ product().shippingInformation }}</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">Returns</span>
+            <span class="val">{{ product().returnPolicy }}</span>
+          </div>
+        </div>
+
+        <button class="pdp-action" (click)="onAddToCart()">Add to Bag</button>
+
+        <footer class="pdp-footer">
+          <h3>Reviews</h3>
+          @for (review of product().reviews; track $index) {
+            <div class="mini-review">
+              <div class="rev-head">
+                <strong>{{ review.reviewerName }}</strong>
+                <span>{{ review.rating }}★</span>
+              </div>
+              <p>"{{ review.comment }}"</p>
+            </div>
+          }
+        </footer>
+      </div>
+    </div>
+  </section>
+} @else {
+  <!-- Optional Loader Space -->
+  <app-loader />
+}

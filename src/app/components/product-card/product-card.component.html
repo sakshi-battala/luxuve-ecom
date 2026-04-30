@@ -1,0 +1,17 @@
+<div
+  class="product-card"
+  [routerLink]="['/products/category', product().category, product().id]"
+>
+  <div class="image-container">
+    <img [src]="product().images[0]" [alt]="product().title" />
+    <button class="quick-add" (click)="$event.stopPropagation()">
+      View Details
+    </button>
+  </div>
+
+  <div class="product-info">
+    <span class="brand">{{ product().brand }}</span>
+    <h3 class="title">{{ product().title }}</h3>
+    <span class="price">{{ product().price | currency }}</span>
+  </div>
+</div>

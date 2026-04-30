@@ -1,0 +1,149 @@
+<section class="checkout-page">
+  <div class="checkout-layout">
+    <!-- Flow Container -->
+    <div class="flow-sections">
+      <!-- Step 1: Address -->
+      <div class="step-card" [class.active]="currentStep === 1">
+        <header class="step-header" (click)="setStep(1)">
+          <span class="step-num">01</span>
+          <h2 class="step-title">Shipping Address</h2>
+        </header>
+
+        <div class="step-content" *ngIf="currentStep === 1">
+          <div class="address-grid">
+            <input
+              type="text"
+              placeholder="Full Name"
+              class="aura-input full"
+              [(ngModel)]="address.name"
+              name="fullName"
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="Street Address"
+              class="aura-input full"
+              [(ngModel)]="address.street"
+              name="street"
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="City"
+              class="aura-input"
+              [(ngModel)]="address.city"
+              name="city"
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="Postal Code"
+              class="aura-input"
+              [(ngModel)]="address.zip"
+              name="zip"
+              required
+            />
+          </div>
+
+          <!-- The button is disabled unless all fields are valid -->
+          <button
+            class="next-btn"
+            [disabled]="!isAddressValid()"
+            (click)="setStep(2)"
+          >
+            Continue to Payment
+          </button>
+
+          <p
+            class="error-hint"
+            *ngIf="showAddressError"
+          >
+            Please complete all fields to proceed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2: Payment -->
+
+      <div class="step-card" [class.active]="currentStep === 2">
+        <header class="step-header" (click)="setStep(2)">
+          <span class="step-num">02</span>
+          <h2 class="step-title">Payment Method</h2>
+        </header>
+
+        <div class="step-content" *ngIf="currentStep === 2">
+          <div class="payment-selection">
+            <!-- UPI Option -->
+            <label class="pay-tile" [class.selected]="paymentMethod === 'UPI'">
+              <input
+                type="radio"
+                name="payment"
+                (change)="paymentMethod = 'UPI'"
+                hidden
+              />
+              <div class="tile-content">
+                <span class="method-name">UPI Transfer</span>
+                <span class="method-desc"
+                  >Pay via PhonePe, Google Pay, or Any UPI App</span
+                >
+              </div>
+              <div class="indicator"></div>
+            </label>
+
+            <!-- COD Option -->
+            <label class="pay-tile" [class.selected]="paymentMethod === 'COD'">
+              <input
+                type="radio"
+                name="payment"
+                (change)="paymentMethod = 'COD'"
+                hidden
+              />
+              <div class="tile-content">
+                <span class="method-name">Cash on Delivery</span>
+                <span class="method-desc"
+                  >Pay upon receiving your LUXUVE artifact</span
+                >
+              </div>
+              <div class="indicator"></div>
+            </label>
+          </div>
+
+          <button
+            class="pay-btn"
+            [disabled]="!paymentMethod"
+            (click)="processOrder()"
+          >
+            Complete Purchase
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal Overlay -->
+    <div class="success-overlay" *ngIf="showSuccess">
+      <div class="success-modal">
+        <div class="check-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h1 class="success-title">Order Confirmed</h1>
+        <p class="success-msg">Your LUXUVE piece is being prepared.</p>
+        <div class="timer-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>

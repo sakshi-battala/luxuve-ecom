@@ -1,0 +1,62 @@
+@import "../../../styles/variables";
+
+.grid-section {
+  background-color: $bg-body;
+  padding: 80px 8%; // Reduced top/bottom padding from 100px
+}
+
+.section-header {
+  margin-bottom: 40px; // Tighter gap between header and cards
+
+  .sub {
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.65rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 2rem; // Slightly smaller to match the minimalist cards
+    font-weight: 600;
+    color: $text-main;
+    letter-spacing: -1px;
+  }
+}
+
+.grid-container {
+  display: grid;
+  // Keeps the 4-column look but tightens the gaps
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; // Reduced from 80px to keep images connected
+  justify-items: center; // Ensures the small 180px cards stay centered in their tracks
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px 0; // Very tight padding for mobile
+  }
+}
+
+
+:host {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

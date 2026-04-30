@@ -1,0 +1,11 @@
+<div class="cat-card" [routerLink]="['/products/category', category().name]">
+  <div class="image-wrapper">
+    <img [src]="category().image" [alt]="category().name" class="cat-image" />
+    <div class="overlay"></div>
+  </div>
+
+  <div class="card-content">
+    <h3 class="cat-title">{{ category().name }}</h3>
+    <span class="cat-action">Explore Series</span>
+  </div>
+</div>

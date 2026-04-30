@@ -1,0 +1,76 @@
+@import "../../../styles/variables";
+
+.cat-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Center everything for that boutique look
+  cursor: pointer;
+  transition: $standard-transition;
+
+  .image-wrapper {
+    position: relative;
+    width: 180px; // Fixed small width for consistency
+    aspect-ratio: 1 / 1; // Perfect square
+    overflow: hidden;
+    transition: all 0.6s $ease-out-expo;
+
+    .cat-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7; // Muted by default
+      // filter: grayscale(1);
+      transition: all 0.8s $ease-out-expo;
+    }
+  }
+
+  .card-content {
+    margin-top: 1.5rem;
+    text-align: center;
+    opacity: 0.4; // Text starts very faint
+    transition: all 0.4s ease;
+
+    .cat-title {
+      font-size: 0.7rem; // Tiny, sophisticated font
+      font-weight: 500;
+      color: $text-main;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .cat-action {
+      font-size: 0.6rem;
+      color: $text-muted;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      transform: translateY(5px);
+      transition: all 0.4s ease;
+    }
+  }
+
+  // The Minimalist Hover
+  &:hover {
+    .image-wrapper {
+      // No scaling, just a subtle lift or border
+      transform: translateY(-5px);
+
+      .cat-image {
+        opacity: 1;
+        filter: grayscale(0);
+      }
+    }
+
+    .card-content {
+      opacity: 1; // Text becomes clear
+
+      .cat-action {
+        transform: translateY(0);
+        color: $text-main;
+      }
+    }
+  }
+}

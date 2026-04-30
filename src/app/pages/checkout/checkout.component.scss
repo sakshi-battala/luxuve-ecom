@@ -1,0 +1,257 @@
+@import "../../../styles/variables";
+
+.checkout-page {
+  padding: 120px 10% 80px;
+  background: $bg-body;
+  min-height: 100vh;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 100px;
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step-card {
+  border-bottom: 1px solid rgba($text-main, 0.1);
+  padding: 40px 0;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+
+  &.active {
+    opacity: 1;
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    .step-num {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: $text-muted;
+    }
+    .step-title {
+      font-size: 1.5rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.aura-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $border-color;
+  padding: 15px 0;
+  color: $text-main;
+  font-size: 0.9rem;
+  outline: none;
+  &.full {
+    width: 100%;
+  }
+  &:focus {
+    border-bottom-color: $text-main;
+  }
+}
+
+.address-grid,
+.card-input-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+  .full {
+    grid-column: span 2;
+  }
+}
+
+.next-btn,
+.pay-btn {
+  background: $text-main;
+  color: $bg-body;
+  border: none;
+  padding: 18px 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+/* Success Modal Styles */
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: $bg-body;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.success-modal {
+  text-align: center;
+  .check-icon {
+    margin-bottom: 30px;
+    color: $text-main;
+  }
+  .success-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+  }
+  .success-msg {
+    color: $text-muted;
+    margin-top: 15px;
+    letter-spacing: 1px;
+  }
+
+  .timer-bar {
+    width: 100%;
+    height: 1px;
+    background: $border-color;
+    margin-top: 50px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: $text-main;
+      animation: timer 5s linear forwards;
+    }
+  }
+}
+
+@keyframes timer {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.payment-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+  max-width: 500px;
+}
+
+.pay-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  border: 1px solid rgba($text-main, 0.05);
+  background: rgba($text-main, 0.02);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .tile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .method-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: $text-main;
+    }
+
+    .method-desc {
+      font-size: 0.7rem;
+      color: $text-muted;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border: 1px solid $border-color;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: $text-main;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  // Selected State
+  &.selected {
+    border-color: rgba($text-main, 0.2);
+    background: rgba($text-main, 0.05);
+
+    .indicator {
+      border-color: $text-main;
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &:hover {
+    background: rgba($text-main, 0.04);
+  }
+}
+
+.pay-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.next-btn {
+  transition: all 0.3s ease;
+
+  &:disabled {
+    background: rgba($text-main, 0.1); // Very faint background
+    color: $text-muted;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.error-hint {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ff4d4d; // Subtle red for errors
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/* Optional: change border color if invalid and touched */
+.aura-input.ng-invalid.ng-touched {
+  border-bottom-color: rgba(#ff4d4d, 0.5);
+}

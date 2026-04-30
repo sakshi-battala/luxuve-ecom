@@ -1,0 +1,203 @@
+@import "../../../styles/variables";
+
+.aura-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+  z-index: 1000;
+  transition: $standard-transition;
+  background: transparent;
+
+  &.scrolled {
+    height: 70px;
+    background: rgba($bg-body, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.nav-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: $text-main;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  .nav-link {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $text-main;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .divider {
+    width: 1px;
+    height: 15px;
+    background: $border-color;
+  }
+
+  .icon-btn {
+    background: none;
+    border: none;
+    color: $text-main;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s $ease-out-expo;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -8px;
+      background: $text-main;
+      color: $bg-body;
+      font-size: 0.5rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+    }
+  }
+
+  .logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid $border-color;
+    padding: 8px 15px;
+    color: $text-muted;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    span:last-child {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background: $text-main;
+      color: $bg-body;
+      border-color: $text-main;
+    }
+  }
+}
+
+.icon-btn {
+  svg {
+    display: block; // Prevents weird baseline spacing
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    opacity: 0.7;
+  }
+}
+
+.logout-btn {
+  svg {
+    margin-left: 4px; // Spacing between the word "Logout" and the icon
+  }
+}
+
+@media (max-width: 768px) {
+  .aura-nav {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .nav-brand {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  .nav-actions .nav-link {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  .nav-actions .divider {
+    display: none;
+  }
+
+  .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .logout-btn {
+    padding: 6px 10px;
+    font-size: 0.55rem;
+    gap: 5px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .cart-count {
+    width: 12px !important;
+    height: 12px !important;
+    font-size: 0.45rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .aura-nav {
+    padding: 0 14px;
+  }
+
+  .nav-brand {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .nav-actions .nav-link {
+    font-size: 0.55rem;
+  }
+
+  .logout-btn {
+    padding: 5px 8px;
+
+    span {
+      display: none;
+    }
+  }
+}

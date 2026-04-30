@@ -1,0 +1,257 @@
+@import "../../../styles/variables";
+
+// @import 'variables';
+
+// Ensure Poppins is loaded (Put this in your global styles.scss instead if possible)
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-body;
+  font-family: $font-family;
+  padding: 20px;
+}
+
+.auth-container {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background-color: $card-bg;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid $border-color;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 850px) {
+    max-width: 450px;
+    flex-direction: column;
+  }
+}
+
+.auth-visual {
+  flex: 1;
+  background: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1000")
+    center/cover;
+  position: relative;
+  padding: 50px;
+  display: flex;
+  align-items: flex-end;
+
+  @media (max-width: 850px) {
+    display: none;
+  }
+
+  .visual-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+
+    .badge {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 4px 12px;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 15px 0;
+      line-height: 1.1;
+    }
+    p {
+      font-weight: 300;
+      opacity: 0.7;
+    }
+  }
+
+  .visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+  }
+}
+
+.auth-form-section {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    padding: 30px;
+  }
+}
+
+.form-header {
+  margin-bottom: 30px;
+  h1 {
+    color: $text-main;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+  p {
+    color: $text-muted;
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+}
+
+.input-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    color: $text-muted;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid $border-color;
+    color: $text-main;
+    font-family: $font-family;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: $standard-transition;
+
+    &:focus {
+      outline: none;
+      border-bottom-color: $primary;
+    }
+  }
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding-right: 40px !important; // Make room for the icon
+  }
+
+  .toggle-password {
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: $text-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $text-main;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.btn-main {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: $primary;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-family: $font-family;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: $standard-transition;
+
+  &:hover {
+    background-color: $primary-hover;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: $text-muted;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $border-color;
+  }
+  span {
+    padding: 0 15px;
+  }
+}
+
+.btn-google {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  color: $text-main;
+  font-family: $font-family;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: $standard-transition;
+
+  img {
+    width: 18px;
+  }
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.form-footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: $text-muted;
+
+  a {
+    color: $text-main;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

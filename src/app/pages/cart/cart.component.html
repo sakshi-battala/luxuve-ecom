@@ -1,0 +1,105 @@
+<section class="cart-container">
+  <header class="cart-header">
+    <h1 class="bag-title">Your Bag</h1>
+    <span class="bag-count">({{ itemsInCart().length }} items)</span>
+  </header>
+
+  @if (itemsInCart().length > 0) {
+    <div class="cart-layout">
+      <!-- Item List -->
+      <div class="cart-items">
+        @for (item of itemsInCart(); track item.id) {
+          <div class="item-card">
+            <div class="img-box" [routerLink]="['/product', item.id]">
+              <img [src]="item.thumbnail" [alt]="item.title" />
+            </div>
+
+            <div class="item-info">
+              <div class="info-top">
+                <h2 class="item-title">{{ item.title }}</h2>
+                <button class="remove-btn" (click)="removeItem(item.id)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <p class="item-meta">Category: {{ item.category }}</p>
+
+              <div class="info-bottom">
+                <div class="qty-selector">
+                  <button (click)="updateQty(item.id, -1)">—</button>
+                  <span>{{ item.quantity }}</span>
+                  <button (click)="updateQty(item.id, 1)">+</button>
+                </div>
+                <span class="item-price">{{
+                  item.price * item.quantity | currency
+                }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Order Summary -->
+      <aside class="cart-summary">
+        <div class="sticky-summary">
+          <h3 class="summary-title">Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>{{ subtotal() | currency }}</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="divider"></div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>{{ subtotal() | currency }}</span>
+          </div>
+          <button class="checkout-btn" routerLink="/checkout">Proceed to Checkout</button>
+        </div>
+      </aside>
+    </div>
+  } @else {
+    <!-- Empty State -->
+    <div class="empty-cart">
+      <div class="empty-visual">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="60"
+          height="60"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="0.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+      </div>
+      <h2 class="empty-text">Your bag is empty</h2>
+      <p class="empty-subtext">
+        Discover our latest collections and find your next piece.
+      </p>
+      <button class="shop-btn" routerLink="/collections">
+        Shop Collections
+      </button>
+    </div>
+  }
+</section>

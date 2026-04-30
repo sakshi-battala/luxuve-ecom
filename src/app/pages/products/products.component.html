@@ -1,0 +1,19 @@
+<section class="products-page">
+  <header class="page-header">
+    <span class="sub">Collection 2026</span>
+    <h1>All Products</h1>
+    <div class="filters">
+      <span>{{ isLoading() ? "..." : products().length }} Items</span>
+    </div>
+  </header>
+
+  <div class="products-grid">
+    @if (isLoading()) {
+      <app-loader />
+    } @else {
+      @for (item of products(); track item.id) {
+        <app-product-card [product]="item"></app-product-card>
+      }
+    }
+  </div>
+</section>

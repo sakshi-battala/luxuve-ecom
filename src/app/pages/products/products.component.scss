@@ -1,0 +1,60 @@
+@import "../../../styles/variables";
+
+.products-page {
+  padding: 100px 8% 80px; // Padding-top clears the navbar
+  background-color: $bg-body;
+  min-height: 100vh;
+}
+
+.page-header {
+  margin-bottom: 20px;
+  text-align: center;
+
+  .sub {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: $text-muted;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: $text-main;
+    font-weight: 600;
+    margin: 10px 0 20px;
+  }
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 25px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+:host {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

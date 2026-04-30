@@ -1,0 +1,214 @@
+@import "../../../styles/variables";
+
+.pdp-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: $bg-body;
+  min-height: 100vh;
+  padding-top: 80px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pdp-visual {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+
+  // Subtle radial glow to define the center void
+  background: radial-gradient(
+    circle at center,
+    rgba($text-main, 0.04) 0%,
+    transparent 75%
+  );
+
+  .stage {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .product-thumb {
+      /** 
+       * THE FIX: 
+       * 1. Use a smaller percentage (30%)
+       * 2. Set a strict max-width so it never gets too large on mid-screens
+       */
+      width: 30%;
+      max-width: 280px; // Image will never exceed this size regardless of screen width
+      height: auto;
+      object-fit: contain;
+
+      // Clean, light shadow for both modes
+      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.12));
+
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        transform: scale(1.08);
+      }
+    }
+
+    .mini-badge {
+      position: absolute;
+      // Positioned relative to the stage, keeping it away from the small image
+      top: 5%;
+      left: 20%;
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: $text-muted;
+      text-transform: uppercase;
+      padding-left: 12px;
+      border-left: 1px solid rgba($text-main, 0.2);
+    }
+  }
+
+  @media (max-width: 992px) {
+    position: relative;
+    height: 40vh;
+    top: 0;
+    background: none;
+
+    .stage .product-thumb {
+      width: 45%; // Allow it to be slightly larger on mobile for visibility
+      max-width: 200px;
+    }
+  }
+}
+
+.pdp-content {
+  padding: 100px 15%; // Large padding creates focus
+
+  @media (max-width: 1200px) {
+    padding: 60px 10%;
+  }
+
+  .category-tag {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: $text-muted;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .pdp-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: $text-main;
+  }
+
+  .pdp-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 1rem;
+    color: $text-main;
+    margin-bottom: 40px;
+    .sep {
+      color: $border-color;
+    }
+  }
+
+  .pdp-description {
+    line-height: 1.8;
+    font-weight: 300;
+    color: $text-muted;
+    margin-bottom: 50px;
+    font-size: 0.95rem;
+  }
+
+  .pdp-specs {
+    border-top: 1px solid $border-color;
+    padding: 30px 0;
+    margin-bottom: 40px;
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      .label {
+        color: $text-muted;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .val {
+        color: $text-main;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .pdp-action {
+    width: 100%;
+    padding: 18px;
+    background: $text-main;
+    color: $bg-black;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.4s $ease-out-expo;
+    margin-bottom: 80px;
+
+    &:hover {
+      letter-spacing: 5px;
+      opacity: 0.9;
+    }
+  }
+
+  .pdp-footer {
+    h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
+    }
+
+    .mini-review {
+      padding: 20px 0;
+      border-top: 1px solid $border-color;
+
+      .rev-head {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+      p {
+        font-size: 0.85rem;
+        color: $text-muted;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+:host {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

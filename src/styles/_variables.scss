@@ -1,0 +1,45 @@
+// 1. Static Brand Variables
+$font-family: "Poppins", sans-serif;
+$brand-name: "AURA";
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+$standard-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$error: #ff453a;
+
+// 2. Theme Definitions
+:root {
+  --bg-body: #000000;
+  --bg-black: #000000; // Define the "Noir" base
+  --card-bg: #111111;
+  --input-bg: #1a1a1a;
+  --border-color: #262626;
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --primary: #ffffff;
+  --primary-hover: #e5e5e5;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] {
+  --bg-body: #f8f8f8;
+  --bg-black: #ffffff; // In light mode, "black" surfaces become pure white
+  --card-bg: #ffffff;
+  --input-bg: #f1f1f1;
+  --border-color: #e5e5e5;
+  --text-main: #121212;
+  --text-muted: #71717a;
+  --primary: #000000;
+  --primary-hover: #262626;
+  --glass-bg: rgba(0, 0, 0, 0.05);
+}
+
+// 3. SCSS Mapping
+$bg-body: var(--bg-body);
+$bg-black: var(--bg-black); // Mapped variable
+$card-bg: var(--card-bg);
+$input-bg: var(--input-bg);
+$border-color: var(--border-color);
+$text-main: var(--text-main);
+$text-muted: var(--text-muted);
+$primary: var(--primary);
+$primary-hover: var(--primary-hover);
+$glass-bg: var(--glass-bg);
