@@ -1,5 +1,9 @@
 # Angular Ecommerce Application
 
+## Live Demo
+
+- https://chipper-custard-a8a391.netlify.app/home
+
 ## Project Overview
 
 This Angular Ecommerce Application is a modern storefront built for portfolio and GitHub showcase use. It combines Angular, Firebase Authentication, Angular Signals, and DummyJSON for a responsive product browsing experience with cart persistence, checkout workflow, and authenticated user access.
