@@ -23,11 +23,14 @@ This Angular Ecommerce Application is a modern storefront built for portfolio an
 - Checkout flow with address and payment selection
 - Order success popup
 - LocalStorage cart persistence
+- Orders page with Firebase Firestore order history
+- Order tracking and management
 
 ## Tech Stack
 
 - Angular 18
 - Firebase Authentication
+- Firebase Firestore (for order storage)
 - Angular Signals
 - DummyJSON API
 - SCSS
@@ -43,6 +46,7 @@ This Angular Ecommerce Application is a modern storefront built for portfolio an
 6. Cart
 7. Checkout
 8. Success Popup
+9. Orders Page (view order history)
 
 ## User Flow Diagrams
 
@@ -84,6 +88,8 @@ Review Cart Items
 Checkout
   ↓
 Order Success
+  ↓
+View Orders Page (order history from Firestore)
 ```
 
 ### Guest User Journey (Browse Only)
@@ -137,6 +143,7 @@ src/
       checkout/
       home/
       login/
+      orders/
       product-details-page/
       products/
       signup/
@@ -202,6 +209,7 @@ styles/
 - `/products/category/:category/:id` — Product details page
 - `/cart` — Cart overview and quantity management
 - `/checkout` — Checkout flow
+- `/orders` — Order history and tracking (authenticated users only)
 - `/login` — Login page
 - `/signup` — Signup page
 - `/**` — Redirects to `/home`
@@ -209,11 +217,12 @@ styles/
 ## Future Improvements
 
 - Add payment gateway integration (Stripe, PayPal)
-- Implement user order history
 - Add product search and filtering
 - Add wishlist / favorites
 - Improve mobile responsiveness and accessibility
 - Add admin panel for managing products and categories
+- Add order status tracking (in progress, shipped, delivered)
+- Add order cancellation and return functionality
 
 ## Deployment Instructions
 

@@ -1,0 +1,140 @@
+@import "../../../styles/variables";
+
+.orders-container {
+  padding: 120px 8% 60px;
+  background: $bg-body;
+  min-height: 100vh;
+  font-family: $font-family;
+}
+
+.page-header {
+  margin-bottom: 40px;
+  .page-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text-main;
+  }
+}
+
+.order-card {
+  background: $bg-black; // Uses your noir base
+  border: 1px solid $border-color;
+  margin-bottom: 24px;
+  transition: $standard-transition;
+
+  &:hover {
+    border-color: rgba($text-main, 0.3);
+  }
+}
+
+.order-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+  background: $glass-bg; // Subtle contrast from the card body
+  border-bottom: 1px solid $border-color;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .meta-group {
+    .label {
+      display: block;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: $text-muted;
+      margin-bottom: 4px;
+    }
+    .value {
+      font-size: 0.85rem;
+      color: $text-main;
+      font-weight: 500;
+    }
+  }
+}
+
+.status-pill {
+  display: inline-block;
+  font-size: 0.6rem;
+  padding: 2px 10px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid currentColor;
+
+  &[data-status="Delivered"] {
+    color: #4caf50;
+  }
+  &[data-status="Processing"] {
+    color: #ff9800;
+  }
+  &[data-status="Shipped"] {
+    color: $text-muted;
+  }
+}
+
+.order-items {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .mini-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .item-img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      background: $input-bg;
+      border: 1px solid $border-color;
+    }
+
+    .item-info {
+      .item-name {
+        font-size: 0.8rem;
+        margin: 0;
+        color: $text-main;
+      }
+      .item-qty {
+        font-size: 0.7rem;
+        margin: 0;
+        color: $text-muted;
+      }
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 100px 0;
+
+  .empty-title {
+    color: $text-muted;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .shop-btn {
+    background: $primary;
+    color: $bg-black; // Text contrasts with button
+    border: none;
+    padding: 15px 30px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: $standard-transition;
+
+    &:hover {
+      background: $primary-hover;
+      transform: translateY(-2px);
+    }
+  }
+}

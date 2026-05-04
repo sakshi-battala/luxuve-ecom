@@ -39,8 +39,8 @@ export class NavbarComponent {
 
   async logout() {
     try {
+      this.cartService.clearCart();
       await this.authService.logout();
-
       this.toastService.success('Logged out successfully');
 
       this.router.navigateByUrl('/login');
@@ -63,5 +63,4 @@ export class NavbarComponent {
     event.stopPropagation();
     this.router.navigateByUrl('/cart');
   }
-
 }

@@ -16,6 +16,7 @@ import { CategoryGridComponent } from './components/category-grid/category-grid.
 
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 export const routes: Routes = [
   // auth layout
@@ -70,6 +71,10 @@ export const routes: Routes = [
       {
         path: 'checkout',
         component: CheckoutComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
       },
     ],
   },

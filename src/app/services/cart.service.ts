@@ -7,11 +7,10 @@ export class CartService {
   cartItems = signal<any[]>([]);
 
   constructor() {
-    const storedCart = localStorage.getItem('cart');
-
-    if (storedCart) {
-      this.cartItems.set(JSON.parse(storedCart));
-    }
+    // const storedCart = localStorage.getItem('cart');
+    // if (storedCart) {
+    //   this.cartItems.set(JSON.parse(storedCart));
+    // }
   }
 
   cartCount = computed(() => {
@@ -63,6 +62,7 @@ export class CartService {
   }
 
   clearCart() {
+    this.cartItems.set([])
     localStorage.removeItem('cart');
   }
 }

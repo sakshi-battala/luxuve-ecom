@@ -11,7 +11,7 @@
 
     <div class="divider"></div>
 
-    <!-- Theme Toggle (Moon/Sun) -->
+    <!-- Theme Toggle -->
     <button class="icon-btn" (click)="toggleTheme()" title="Toggle Theme">
       <svg
         *ngIf="isDarkMode"
@@ -46,8 +46,31 @@
       </svg>
     </button>
 
-    <!-- Cart (Shopping Bag) -->
-    <button class="icon-btn cart-trigger" (click)="onNavigateToCart($event)" >
+    <!-- Order History -->
+    @if (isLoggedIn) {
+      <button class="icon-btn" routerLink="/orders" title="Order History">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
+          <path
+            d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"
+          />
+          <path d="M12 3v6" />
+        </svg>
+      </button>
+    }
+
+    <!-- Cart -->
+    <button class="icon-btn cart-trigger" (click)="onNavigateToCart($event)" title="Cart">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"

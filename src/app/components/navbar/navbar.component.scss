@@ -1,5 +1,6 @@
 @import "../../../styles/variables";
 
+// 1. Core Navigation Container
 .aura-nav {
   position: fixed;
   top: 0;
@@ -13,7 +14,9 @@
   z-index: 1000;
   transition: $standard-transition;
   background: transparent;
+  font-family: $font-family;
 
+  // State when user scrolls down
   &.scrolled {
     height: 70px;
     background: rgba($bg-body, 0.8);
@@ -22,6 +25,7 @@
   }
 }
 
+// 2. Brand Identity
 .nav-brand {
   font-size: 1.2rem;
   font-weight: 700;
@@ -29,12 +33,18 @@
   color: $text-main;
   cursor: pointer;
   text-transform: uppercase;
+  transition: $standard-transition;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
+// 3. Action Group
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 25px; // Balanced gap for icons + links
 
   .nav-link {
     font-size: 0.7rem;
@@ -43,6 +53,7 @@
     color: $text-main;
     text-decoration: none;
     transition: opacity 0.3s;
+
     &:hover {
       opacity: 0.6;
     }
@@ -54,26 +65,38 @@
     background: $border-color;
   }
 
+  // 4. Icon Buttons (Theme, Orders, Cart)
   .icon-btn {
     background: none;
     border: none;
     color: $text-main;
+    padding: 0;
     cursor: pointer;
     position: relative;
     display: flex;
     align-items: center;
     transition: transform 0.3s $ease-out-expo;
 
-    &:hover {
-      transform: translateY(-2px);
+    svg {
+      display: block;
+      transition: opacity 0.3s ease;
     }
 
+    &:hover {
+      transform: translateY(-2px);
+
+      svg {
+        opacity: 0.7;
+      }
+    }
+
+    // Cart Notification Badge
     .cart-count {
       position: absolute;
       top: -5px;
       right: -8px;
       background: $text-main;
-      color: $bg-body;
+      color: $bg-black; // Contrasts with bag
       font-size: 0.5rem;
       width: 14px;
       height: 14px;
@@ -85,6 +108,7 @@
     }
   }
 
+  // 5. Auth Button
   .logout-btn {
     display: flex;
     align-items: center;
@@ -97,34 +121,28 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: $standard-transition;
 
-    span:last-child {
-      font-size: 1rem;
+    svg {
+      transition: transform 0.3s ease;
     }
 
     &:hover {
       background: $text-main;
-      color: $bg-body;
+      color: $bg-black;
       border-color: $text-main;
+
+      svg {
+        transform: translateX(2px);
+      }
     }
   }
 }
 
-.icon-btn {
-  svg {
-    display: block; // Prevents weird baseline spacing
-    transition: transform 0.3s ease;
-  }
-
-  &:hover svg {
-    opacity: 0.7;
-  }
-}
-
-.logout-btn {
-  svg {
-    margin-left: 4px; // Spacing between the word "Logout" and the icon
+// 6. Responsive Design
+@media (max-width: 1024px) {
+  .aura-nav {
+    padding: 0 5%;
   }
 }
 
@@ -140,64 +158,57 @@
   }
 
   .nav-actions {
-    gap: 12px;
-  }
+    gap: 15px; // Tighter gap for tablet/mobile
 
-  .nav-actions .nav-link {
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-  }
+    .divider {
+      display: none; // Cleaner mobile look
+    }
 
-  .nav-actions .divider {
-    display: none;
-  }
+    .nav-link {
+      font-size: 0.6rem;
+    }
 
-  .icon-btn svg {
-    width: 18px;
-    height: 18px;
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   .logout-btn {
     padding: 6px 10px;
     font-size: 0.55rem;
-    gap: 5px;
 
     svg {
       width: 14px;
       height: 14px;
     }
   }
-
-  .cart-count {
-    width: 12px !important;
-    height: 12px !important;
-    font-size: 0.45rem !important;
-  }
 }
 
 @media (max-width: 480px) {
   .aura-nav {
-    padding: 0 14px;
+    padding: 0 15px;
   }
 
   .nav-brand {
-    font-size: 0.8rem;
     letter-spacing: 2px;
   }
 
   .nav-actions {
-    gap: 10px;
-  }
+    gap: 12px;
 
-  .nav-actions .nav-link {
-    font-size: 0.55rem;
-  }
-
-  .logout-btn {
-    padding: 5px 8px;
-
-    span {
+    // Hide labels on very small screens to prevent overlap
+    .logout-btn span {
       display: none;
+    }
+
+    .logout-btn {
+      padding: 8px;
+      border-radius: 50%; // Circular icon button on mobile
+
+      svg {
+        margin: 0;
+      }
     }
   }
 }
