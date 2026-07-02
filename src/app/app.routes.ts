@@ -8,15 +8,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductsComponent } from './pages/products/products.component';
-
-import { authGuard } from './guards/auth.guard';
-import { guestGuard } from './guards/guest.guard';
-
 import { CategoryGridComponent } from './components/category-grid/category-grid.component';
-
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+
+import { guestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
   // auth layout

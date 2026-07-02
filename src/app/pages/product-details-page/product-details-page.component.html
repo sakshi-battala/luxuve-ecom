@@ -1,6 +1,6 @@
 @if (product()) {
   <section class="pdp-container">
-    <!-- Visual Stage: Minimal & Airy -->
+    <!-- Product Image  -->
     <div class="pdp-visual">
       <div class="stage">
         @if (product().discountPercentage > 0) {
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <!-- Content Stage: Structured & Clean -->
+    <!-- Content Stage-->
     <div class="pdp-content">
       <div class="content-limit">
         <header class="pdp-header">
@@ -62,6 +62,6 @@
     </div>
   </section>
 } @else {
-  <!-- Optional Loader Space -->
+  <!-- Optional Loader -->
   <app-loader />
 }

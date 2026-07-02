@@ -31,9 +31,7 @@ export class NavbarComponent {
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
-
     const theme = this.isDarkMode ? 'dark' : 'light';
-
     document.documentElement.setAttribute('data-theme', theme);
   }
 

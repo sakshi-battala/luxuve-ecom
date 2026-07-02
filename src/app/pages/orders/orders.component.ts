@@ -1,9 +1,9 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 import { OrderService } from '../../services/order.service';
 
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 import { RouterLink } from '@angular/router';
 import { LoaderComponent } from '../../shared/loader/loader.component';
@@ -11,7 +11,7 @@ import { LoaderComponent } from '../../shared/loader/loader.component';
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [ DatePipe, RouterLink, LoaderComponent],
+  imports: [DatePipe, RouterLink, LoaderComponent],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })

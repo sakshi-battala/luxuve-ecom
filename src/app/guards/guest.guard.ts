@@ -8,7 +8,6 @@ export const guestGuard: CanActivateFn = async () => {
   const auth = inject(Auth);
 
   const currentUser = await firstValueFrom(authState(auth));
-  console.log(currentUser);
 
   if (!currentUser) return true;
   router.navigateByUrl('/home');

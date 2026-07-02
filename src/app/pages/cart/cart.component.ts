@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 export class CartComponent {
   private cartService = inject(CartService);
 
-  itemsInCart = this.cartService.cartItems; // Signal from your service
+  itemsInCart = this.cartService.cartItems; // Signal from service
 
   subtotal = computed(() => {
     return this.itemsInCart().reduce(
